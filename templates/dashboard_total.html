@@ -1,0 +1,435 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Dashboard - Brainiac</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+        <!-- <script src="static/js/leaderboard.js"></script> -->
+        <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container text-center my-2 d-sm-block d-lg-none">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <a href="/" class="btn btn-outline-primary">Home <i class="bi bi-house-fill"></i> </a>
+            <a href="dashboard" class="btn btn-outline-primary">Quiz <i class="bi bi-puzzle-fill"></i> </a>
+            <a href="leaderboard" class="btn btn-outline-primary">Leaderboard <i class="bi bi-clipboard-data-fill"></i> </a>
+            <div div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle btn-md" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Others</button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="blog">Blog</a>
+                  <a class="dropdown-item" href="about">About</a>
+                  <!-- <a class="dropdown-item" href="contact_us">Contact Us</a> -->
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  {% if request.user.is_authenticated %}
+                  <li><a class="dropdown-item" href="logout">Logout</a></li>
+                  {% else %}
+                  <li><a href="login" class="dropdown-item">Login</a></li>
+                  {% endif %}
+                  </div>
+              </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
+        <div class="container">
+            <a class="navbar-brand" href="/">Brainiac</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home <i class="bi bi-house-fill"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard">Quiz <i class="bi bi-puzzle-fill"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard">Leaderboard <i class="bi bi-clipboard-data-fill"></i> </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Other
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="blog">Blog</a></li>
+                            <li><a class="dropdown-item" href="about">About</a></li>
+                            <!-- <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="">Downloads</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <a href="login" class="btn btn-primary ms-2">Login</a> -->
+                    <div class="d-flex">
+                        <span class="userText"><a href="profile" class="me-3 " style="text-decoration: none">Hello, {{request.user}}</a></span>
+                    </div>
+                </form>
+                <a href="logout" class="btn btn-danger btn-md me-2">Log out</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-------- Content Start ------->
+
+    <div class="text-center">
+        <img src="static/Images/brain.jpg" alt="brain" style=" height: auto;" width="150" class="rounded" >
+      </div>
+
+    <h1 class="display-4 text-center mb-5">Admin-Dashboard</h1>
+
+    <!-- Dashboard Code Goes Here -->
+
+            
+    <div class="container">
+        <div class="row">
+            <div class="col-sm mb-3 mx-5">
+                <div class="card bg-light text-primary">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title display-4">{{players_count}}</h1>
+                        <p class="card-text mb-4">Total Players</p>
+                        <!-- <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">150%</span>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-3 mx-5">
+                <div class="card text-primary bg-light ">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title display-4">{{total_quizzes}}</h1>
+                        <p class="card-text mb-4"> Total Quizzes</p>
+                        <!-- <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">150%</span>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-sm mb-3">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title">16</h1>
+                        <p class="card-text">Submissions</p>
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">150%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-3">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title">45</h1>
+                        <p class="card-text">Questions</p>
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">150%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-sm col-md mb-3">
+                <h2 class="mb-3 text-center mt-5">Player's Info</h2>
+                <table class="table table-hover table-responsive table-borderless mx-5">
+                    <thead class="">
+                        <tr class="table-primary">
+                            <th class="text-primary">#</th>
+                            <th class="text-primary">Name</th>
+                            <th class="text-primary">Email</th>
+                            <th class="text-primary">Location</th>
+                            <th class="text-primary">Gender</th>
+                            <th class="text-primary">Bio</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for var in players %}
+                        <!-- <tr class="table-{% if not var.is_read %}active{% endif %}"> -->
+                        <tr>
+                            <th>{{forloop.counter}}</th>
+                            <td>{{var.name}} {{var.last_name}}</td>
+                            <td>{{var.email}}</td>
+                            <td>{{var.location}}</td>
+                            <td>{{var.gender}}</td>
+                            <td>{{var.bio}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-------- Content End ------->
+
+
+
+
+
+
+
+
+    <!-- DYNAMIC BELOW for ref -->
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-sm-3 mb-3">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title">{{total_users}}</h1>
+                        <p class="card-text">Active Users</p>
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">{{today_users}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">{{gain_users|default:0}}%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title">{{total_quizzes}}</h1>
+                        <p class="card-text">Quizzes</p>
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">{{today_quizzes}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">{{gain_quizzes|default:0}}%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title">{{total_quiz_submit}}</h1>
+                        <p class="card-text">Submissions</p>
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">{{today_quiz_submit}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">{{gain_quiz_submit|default:0}}%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h1 class="card-title pricing-card-title">{{total_questions}}</h1>
+                        <p class="card-text">Questions</p>
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Today
+                                <span class="badge bg-primary rounded-pill">{{today_questions}}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Gain %
+                                <span class="badge bg-primary rounded-pill">{{gain_questions|default:0}}%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 mb-3">
+                <h2 class="mb-3 text-center">Inbox</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in messages %}
+                        <tr class="table-{% if not message.is_read %}active{% endif %}">
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td><a href="{% url 'profile' message.user.username %}">@{{message.user.username}}</a></td>
+                            <td>{{message.subject}}</td>
+                            <td>{{message.created_at}}</td>
+                            <td><a href="{% url 'message' message.id %}" class="btn btn-sm btn-primary">Open</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> -->
+
+
+
+    <!------- Content End --------->
+
+
+            <!------------ FOOTER ------------->
+
+
+    
+            <!-- <div class="container"> -->
+                <footer class="bg-black">
+                    <div class="row">
+                      <div class="col-6 col-md-2 mb-3">
+                        <!-- <h5>Section</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul> -->
+      
+                        <ul class="list-unstyled d-flex my-5 mx-5">
+                          <!-- <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li> -->
+                          <li class="ms-3"><a class=" fa fa-facebook" href="#"></a></li>
+                          <!-- <li class="ms-3"><a class=" fa fa-twitter" href="#"></a></li> -->
+                          <!-- <li class="ms-3"><a class=" fa fa-linkedin" href="#"></a></li> -->
+                          <li class="ms-3"><a class=" fa fa-youtube" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-instagram" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-reddit" href="#"></a></li>
+                        </ul>
+      
+                      </div>
+                
+                      <div class="col-6 col-md-2 mb-3">
+                        <!-- <h5>Section</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul> -->
+                      </div>
+                
+                      <div class="col-6 col-md-2 mb-3">
+                        <!-- <h5>Section</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul> -->
+                      </div>
+                
+                      <div class="col-md-5 offset-md-1 mb-3">
+                        <form class="mx-5">
+                          <h5 class="text-white mt-4">Subscribe to our newsletter</h5>
+                          <p class="text-white">Monthly digest of what's new and exciting from us.</p>
+                          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                
+                    <div class=" py-4 my-4 border-top">
+                      <p class="text-white text-center">&copy;  2023, Brainiac.  All rights reserved.</p>
+                      <ul class="list-unstyled d-flex">
+                        <!-- <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li> -->
+                      </ul>
+                    </div>
+                  </footer>
+                <!-- </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+        
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+</body>
+</html> -->

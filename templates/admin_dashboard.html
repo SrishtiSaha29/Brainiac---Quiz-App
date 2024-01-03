@@ -1,0 +1,218 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Brainiac</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+        <!-- <script src="static/js/leaderboard.js"></script> -->
+        <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body> 
+    <div class="container text-center my-2 d-sm-block d-lg-none">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <a href="/" class="btn btn-outline-primary">Home</a>
+            <a href="dashboard" class="btn btn-outline-primary">Quiz</a>
+            <a href="leaderboard" class="btn btn-outline-primary">Leaderboard</a>
+            <a href="login" class="btn btn-outline-primary">Login</a>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
+        <div class="container">
+            <a class="navbar-brand" href="/">Brainiac</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard">Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leaderboard">Leaderboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Other
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="blog">Blog</a></li>
+                            <li><a class="dropdown-item" href="about">About</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Downloads</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <a href="login" class="btn btn-primary ms-2">Login</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="display-4 text-center my-5">Admin Dashboard</h1>
+
+
+    <div class="col-2"></div>
+    <div class="col-8">
+    <table class="table table-hover">
+      <thead class="thead-dark">  
+        <tr>    
+            <th>#</th>
+            <th>Player Name</th>
+            <th>HTML Score</th>
+            <th>Misc Score</th>
+            <th>MySQL Score</th>
+            <th>Python Score</th>
+            <th>DSA Score</th>
+            <th>Java Score</th>
+            <th>CSS Score</th>
+            <th>Aptitude Score</th>
+            <th>Total Score</th>
+            <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>1</td>
+            <td>Riya</td>
+            <td>80</td>
+            <td>79</td>
+            <td>69</td>
+            <td>73</td>
+            <td>70</td>
+            <td>75</td>
+            <td>70</td>
+            <td>70</td>
+            <td>200</td>
+            <td>Gold</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-2"></div>
+
+    <!-- <canvas id="chart-options-example"></canvas> -->
+
+            <!-- <div class="container"> -->
+                <footer class="bg-black">
+                    <div class="row">
+                      <div class="col-6 col-md-2 mb-3">
+                        <!-- <h5>Section</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul> -->
+      
+                        <ul class="list-unstyled d-flex my-5 mx-5">
+                          <!-- <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li> -->
+                          <li class="ms-3"><a class=" fa fa-facebook" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-twitter" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-linkedin" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-youtube" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-instagram" href="#"></a></li>
+                          <li class="ms-3"><a class=" fa fa-reddit" href="#"></a></li>
+                        </ul>
+      
+                      </div>
+                
+                      <div class="col-6 col-md-2 mb-3">
+                        <!-- <h5>Section</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul> -->
+                      </div>
+                
+                      <div class="col-6 col-md-2 mb-3">
+                        <!-- <h5>Section</h5>
+                        <ul class="nav flex-column">
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                        </ul> -->
+                      </div>
+                
+                      <div class="col-md-5 offset-md-1 mb-3">
+                        <form class="mx-5">
+                          <h5 class="text-white mt-4">Subscribe to our newsletter</h5>
+                          <p class="text-white">Monthly digest of what's new and exciting from us.</p>
+                          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                
+                    <div class=" py-4 my-4 border-top">
+                      <p class="text-white text-center">&copy;  2023, Brainiac.  All rights reserved.</p>
+                      <ul class="list-unstyled d-flex">
+                        <!-- <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li> -->
+                      </ul>
+                    </div>
+                  </footer>
+                <!-- </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+        <!-- <script src="static/js/leaderboard.js"></script> -->
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+</body>
+</html> -->
